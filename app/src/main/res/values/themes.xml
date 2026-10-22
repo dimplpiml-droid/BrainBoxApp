@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.BrainBoxApp" parent="android:Theme.Material.Light.NoActionBar">
+        <!-- Параметр окна находится ВНУТРИ тега style -->
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+</resources>
