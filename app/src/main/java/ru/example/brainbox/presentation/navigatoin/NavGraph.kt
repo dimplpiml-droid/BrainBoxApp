@@ -1,18 +1,12 @@
 package ru.example.brainbox.presentation.navigatoin
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.painterResource
-import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import ru.example.brainbox.R
 import ru.example.brainbox.presentation.screens.SplashScreen
 import ru.example.brainbox.presentation.screens.WelcomeScreen
 import ru.example.brainbox.presentation.screens.onboarding.OnBoardingScreen
-import ru.example.brainbox.presentation.screens.onboarding.OnBoardingTemplate
-import ru.example.brainbox.uikit.ui.theme.BrainBoxTheme
-
 
 sealed class Screen(val route: String) {
     object Splash : Screen("splash_screen")
@@ -43,7 +37,7 @@ fun SetupNavGraph() {
             })
         }
         composable (route = Screen.Welcome.route){
-            WelcomeScreen(onSignInClick = {}) { }
+            WelcomeScreen(onSignInClick = {}, onSignUpClick = {})
         }
     }
 }
