@@ -18,9 +18,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
-import ru.example.brainbox.uikit.ui.theme.BrainBoxTheme
 import ru.example.brainbox.uikit.ui.theme.PoppinsFontFamily
-import ru.example.brainbox.uikit.ui.theme.PrimaryText
+import ru.example.brainbox.R
+
 
 @Composable
 fun SplashScreen(
