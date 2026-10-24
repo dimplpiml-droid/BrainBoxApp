@@ -30,7 +30,7 @@ fun WelcomeScreen(onSignInClick: () -> Unit, onSignUpClick: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 137.dp, start = 25.dp, end = 25.dp, bottom = 60.dp),
+            .padding(top = 137.dp, start = 25.dp, end = 25.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
 
@@ -80,7 +80,7 @@ fun WelcomeScreen(onSignInClick: () -> Unit, onSignUpClick: () -> Unit) {
         Spacer(modifier = Modifier.padding(bottom = 23.dp))
 
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp),
             horizontalArrangement = Arrangement.spacedBy(14.dp)
         ) {
             BrainBoxSocialButton(

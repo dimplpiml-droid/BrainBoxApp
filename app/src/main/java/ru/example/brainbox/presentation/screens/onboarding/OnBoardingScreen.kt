@@ -1,5 +1,6 @@
 package ru.example.brainbox.presentation.screens.onboarding
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -37,6 +38,9 @@ fun OnBoardingScreen(
     )
 
     val page = pages[currentStep]
+    BackHandler(enabled = currentStep > 0) {
+        currentStep--
+    }
 
     OnBoardingTemplate(
         page = page,
