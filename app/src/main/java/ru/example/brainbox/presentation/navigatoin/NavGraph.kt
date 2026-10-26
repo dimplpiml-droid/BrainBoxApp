@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import ru.example.brainbox.presentation.screens.LoginScreen
 import ru.example.brainbox.presentation.screens.PhoneNumberScreen
 import ru.example.brainbox.presentation.screens.RegisterScreen
 import ru.example.brainbox.presentation.screens.SplashScreen
@@ -16,7 +17,7 @@ sealed class Screen(val route: String) {
     object Welcome : Screen("welcome_screen")
     object SignIn : Screen("sign_in_screen")
     object SignUp : Screen("sign_up_screen")
-    object  PhoneNumber : Screen("phone_number_screen")
+    object PhoneNumber : Screen("phone_number_screen")
 }
 
 @Composable
@@ -41,7 +42,7 @@ fun SetupNavGraph() {
         }
         composable(route = Screen.Welcome.route) {
             WelcomeScreen(
-                onSignInClick = {},
+                onSignInClick = {navController.navigate(Screen.SignIn.route)},
                 onSignUpClick = {
                     navController.navigate(Screen.SignUp.route)
                 }
@@ -49,14 +50,29 @@ fun SetupNavGraph() {
         }
         composable(route = Screen.SignUp.route) {
             RegisterScreen(
-                onReturnPage = {navController.popBackStack()},
-                onRegisterClick = {navController.navigate(Screen.PhoneNumber.route)},
-                onAuthorizationPage = {})
+                onReturnPage = { navController.popBackStack() },
+                onRegisterClick = { navController.navigate(Screen.PhoneNumber.route) },
+                onAuthorizationPage = {
+                    navController.navigate(Screen.SignIn.route)
+                })
         }
         composable(route = Screen.PhoneNumber.route) {
             PhoneNumberScreen(
                 onReturnPage = {
                     navController.popBackStack()
+                }
+            )
+        }
+        composable(route = Screen.SignIn.route) {
+            LoginScreen(
+                onReturnPage = {
+                    navController.popBackStack()
+                },
+                onForgetPassword = {
+
+                },
+                onRegistrationScreen = {
+                    navController.navigate(Screen.SignUp.route)
                 }
             )
         }
