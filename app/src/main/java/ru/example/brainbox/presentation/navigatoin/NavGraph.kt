@@ -8,6 +8,7 @@ import ru.example.brainbox.presentation.screens.ForgetPasswordScreen
 import ru.example.brainbox.presentation.screens.LoginScreen
 import ru.example.brainbox.presentation.screens.PhoneNumberScreen
 import ru.example.brainbox.presentation.screens.RegisterScreen
+import ru.example.brainbox.presentation.screens.ResetScreen
 import ru.example.brainbox.presentation.screens.SplashScreen
 import ru.example.brainbox.presentation.screens.WelcomeScreen
 import ru.example.brainbox.presentation.screens.onboarding.OnBoardingScreen
@@ -20,6 +21,7 @@ sealed class Screen(val route: String) {
     object SignUp : Screen("sign_up_screen")
     object PhoneNumber : Screen("phone_number_screen")
     object ForgetPassword : Screen("forget_password_screen")
+    object ResetScreen : Screen("reset_screen")
 }
 
 @Composable
@@ -82,8 +84,15 @@ fun SetupNavGraph() {
             ForgetPasswordScreen(onReturnPage = {
                 navController.popBackStack()
             }, onResetScreen = {
-
+navController.navigate(Screen.ResetScreen.route)
             })
+        }
+        composable(route = Screen.ResetScreen.route) {
+            ResetScreen (
+                onReturnPage = {
+                    navController.popBackStack()
+                },
+            )
         }
     }
 }
