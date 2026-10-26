@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import ru.example.brainbox.presentation.screens.ForgetPasswordScreen
 import ru.example.brainbox.presentation.screens.LoginScreen
 import ru.example.brainbox.presentation.screens.PhoneNumberScreen
 import ru.example.brainbox.presentation.screens.RegisterScreen
@@ -18,6 +19,7 @@ sealed class Screen(val route: String) {
     object SignIn : Screen("sign_in_screen")
     object SignUp : Screen("sign_up_screen")
     object PhoneNumber : Screen("phone_number_screen")
+    object ForgetPassword : Screen("forget_password_screen")
 }
 
 @Composable
@@ -42,7 +44,7 @@ fun SetupNavGraph() {
         }
         composable(route = Screen.Welcome.route) {
             WelcomeScreen(
-                onSignInClick = {navController.navigate(Screen.SignIn.route)},
+                onSignInClick = { navController.navigate(Screen.SignIn.route) },
                 onSignUpClick = {
                     navController.navigate(Screen.SignUp.route)
                 }
@@ -69,12 +71,19 @@ fun SetupNavGraph() {
                     navController.popBackStack()
                 },
                 onForgetPassword = {
-
+                    navController.navigate(Screen.ForgetPassword.route)
                 },
                 onRegistrationScreen = {
                     navController.navigate(Screen.SignUp.route)
                 }
             )
+        }
+        composable(route = Screen.ForgetPassword.route) {
+            ForgetPasswordScreen(onReturnPage = {
+                navController.popBackStack()
+            }, onResetScreen = {
+
+            })
         }
     }
 }
